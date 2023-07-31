@@ -4,22 +4,27 @@ import axios from 'axios'
 import CardProduct from "./CardProduct"
 import Checkbox_Group from "./Checkbox_Group"
 import StateContext from "../store/StateContext"
+import ProductsContext from '../store/StateContext';
 const URL = "https://fakestoreapi.com/products"
 
 const CardContext = () => {
-    const [products, setProducts] = useState([])
+    //const [products, setProducts] = useState([])
     const [filtedProducts, setFiltedProducts] = useState([])
-    useEffect(() => {
+    /* useEffect(() => {
         axios.get(URL)
             .then(response => {
                 console.log(response.data)
                 setProducts(response.data)
             })
             .catch(error => console.log(error))
-    }, [])
-
-const filterProducts = () => {
-
+    }, []) */
+    const { products } = useContext(ProductsContext)
+    useEffect(()=>{
+        console.log(products)
+      },[products])
+      
+    const filterProducts = () => {
+        
 }
     return (
         <>

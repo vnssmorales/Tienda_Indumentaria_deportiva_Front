@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import StateContent from "./StateContext"
 
 import axios from 'axios'
@@ -10,20 +10,24 @@ const ProductProvider = ({ children }) => {
     const URL = "https://fakestoreapi.com/products"
     const [products, setProducts] = useState([])
     useEffect(() => {
-        axios.get(URL)
-            .then(response => {
+        const getProducts = async () => {
+            try {
+                const response = await axios.get(URL)
                 console.log(response.data)
                 setProducts(response.data)
-            })
-            .catch(error => console.log(error))
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getProducts()
     }, [])
     const initialState = {
         products
     }
-    return(
-        <ProductsContext value={ initialState }>
-            { children }
-        </ProductsContext>
+    return (
+        <ProductsContext.Provider value={initialState}>
+            {children}
+        </ProductsContext.Provider>
     )
 }
 export default ProductProvider;
