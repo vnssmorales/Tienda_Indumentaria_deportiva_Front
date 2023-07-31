@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from 'react';
 import CardProduct from "./CardProduct"
 import Checkbox_Group from "./Checkbox_Group"
 import ProductsContext from '../store/StateContext';
+import React from 'react';
+
 const URL = "https://fakestoreapi.com/products"
 
 const CardContext = () => {

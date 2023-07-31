@@ -1,20 +1,19 @@
-import { useContext, useEffect, useState } from 'react'
-import ProductsContext from './store/StateContext'
-
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom'
+import Home from './assets/pages/Home'
+import React from 'react'
+import CardDetail from './assets/components/CardDetail'
 
 function App() {
- 
-const {products} = useContext(ProductsContext)
-
-  useEffect(()=>{
-    console.log(products)
-  },[products])
 
   return (
     <>
-      
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home></Home>}/>
+          <Route path="/detail/:id" element={<CardDetail></CardDetail>}/>
+        </Routes>
+      </Router>
     </>
-
   )
 }
 

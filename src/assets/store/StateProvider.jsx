@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import StateContent from "./StateContext"
-
+import React from "react";
 import axios from 'axios'
 import ProductsContext from "./StateContext";
+
+
 
 const ProductProvider = ({ children }) => {
     //const URL = "https://fakestoreapi.com/products"
     const URL = "http://localhost:3100/api/productos"
     const [products, setProducts] = useState([])
-
     useEffect(() => {
 
         /* axios.get(URL)
@@ -29,13 +30,12 @@ const ProductProvider = ({ children }) => {
         }
         getProducts()
     }, [])
-
     const initialState = {
         products
     }
-    return(
-        <ProductsContext.Provider value={ initialState }>
-            { children }
+    return (
+        <ProductsContext.Provider value={initialState}>
+            {children}
         </ProductsContext.Provider>
     )
 }
