@@ -11,7 +11,7 @@ function CardProduct(props) {
         </div>
         <div className="card-body">
           <span className="card-link">Price $<span>{props.product.price}</span></span>
-          <Link to={`../detail/${props.product._id}`} className="card-link">More info...</Link>
+          <Link to={`../detail/${props.product.id}`} className="card-link">More info...</Link>
         </div>
       </div>
   );
