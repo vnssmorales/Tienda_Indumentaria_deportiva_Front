@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from 'react'
-import ProductProvider from './assets/store/StateProvider'
-import './App.css'
+import ProductsContext from './store/StateContext'
 
 
 function App() {
-  
-  let products = useContext(ProductProvider)
+ 
+const {products} = useContext(ProductsContext)
+
   useEffect(()=>{
     console.log(products)
-  },[])
+  },[products])
 
   return (
     <>
