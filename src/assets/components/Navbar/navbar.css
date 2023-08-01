@@ -1,0 +1,15 @@
+.container-fluid {
+    padding: 15px 0;
+}
+.navbar-collapse {
+    flex-direction: row-reverse;
+}
+.navbar-nav .nav-link {
+    padding: 5px 20px;
+    border: 1px solid;
+    margin: 0 10px;
+}
+.navbar-brand icon {
+    font-size: 30px;
+    margin-right: 10px;
+}

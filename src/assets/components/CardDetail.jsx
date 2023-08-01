@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 const URL =  `https://fakestoreapi.com/products/${1}`
+import React from 'react';
 
 
 const CardDetail = () => {
