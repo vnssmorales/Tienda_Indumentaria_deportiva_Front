@@ -1,9 +1,8 @@
-import Logo from "../img/logo.jpg"
-
+import Logo from "../../img/logo.jpg"
+import React from "react";
 function Footer() {
   return (
-    <nav className="footer justify-content-end px-5 fixed-bottom navbar navbar-light bg-dark">
-      {/* <img src={Logo} width="30" height="30" alt="Logo" /> */}
+    <nav className="footer justify-content-end px-5 fixed-bottom navbar navbar-light" style={{background : "#A100FE"}}>
       <ul className="nav justify-content-end">
         <li className="nav-item mx-5">
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" className="bi bi-facebook" viewBox="0 0 16 16">
