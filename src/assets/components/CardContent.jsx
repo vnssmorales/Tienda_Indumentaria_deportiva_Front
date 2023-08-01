@@ -4,8 +4,6 @@ import Checkbox_Group from "./Checkbox_Group"
 import ProductsContext from '../store/StateContext';
 import React from 'react';
 
-const URL = "https://fakestoreapi.com/products"
-
 const CardContext = () => {
     const { products } = useContext(ProductsContext)
     const [productsApi, setProductsApi] = useState([products])
@@ -49,9 +47,7 @@ const CardContext = () => {
                 <div className="container pb-5">
                     <div className="row" id="contenedorCards">
                         {filtedProducts.map((product, index) => {
-
                             return (<CardProduct key={index} product={product}></CardProduct>)
-
                         })}
                     </div>
                 </div>
