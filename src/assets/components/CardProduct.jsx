@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import React from 'react';
 
 function CardProduct(props) {
   return (
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3">
       <div className="card" style={{ width: "18rem" }}>
-        <img className="card-img-top" src={props.product.image} alt="Card image cap" style={{ height: "200px" }} />
+        <img className="card-img-top" src={props.product.image} alt="Card image cap" style={{ objectFit: "contain", height: "200px", marginTop:"20px"}} />
         <div className="card-body">
           <h5 className="card-title">{props.product.title}</h5>
           <p className="card-text">{props.product.description}</p>
@@ -14,6 +16,7 @@ function CardProduct(props) {
           <Link to={`../api/productos/${props.product._id}`} className="card-link">More info...</Link>
         </div>
       </div>
+    </div>
   );
 }
 

@@ -1,6 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
+
 const URL =  `http://localhost:3100/api/productos`
 import axios from 'axios';
+
+
 
 const CardDetail = () => {
   const [product, setProduct] = useState([])
