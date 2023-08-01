@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import React from 'react';
 
-const URL = `http://localhost:3100/api/productos/`
+//const URL = `http://localhost:3100/api/productos/`
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
@@ -30,6 +30,7 @@ const CardDetail = () => {
         <div className="row">
           <div className='col'></div>
           <div className="col-6">
+            
             <div className="card" style={{ width: "24rem" }}>
               <img className="card-img-top" src={product.image} alt="Card image cap" />{/*    */}
               <div className="card-body">
@@ -44,6 +45,7 @@ const CardDetail = () => {
               </div>
             </div>
           </div>
+          
           <div className='col'></div>
         </div>
       </div>
