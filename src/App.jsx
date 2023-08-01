@@ -4,6 +4,7 @@ import React from 'react'
 import CardDetail from './assets/components/CardDetail'
 import { Navbar } from './assets/components/Navbar/navbar'
 import CardDetailEditDelete from './assets/components/CardDetailEditDelete'
+import Footer from './assets/components/Footer'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/productos/:id" element={<CardDetail></CardDetail>}/>
         </Routes>
       </Router>
+      <Footer></Footer>
     </>
   )
 }

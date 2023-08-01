@@ -60,7 +60,7 @@ const CardDetailEditDelete = () => {
             data.category = category.current.value
             enviar = true
         }
-        
+
         if(enviar){
             axios.patch(`http://localhost:3100/api/productos/${id}`,data)
             .then(response => console.log(response))
@@ -82,9 +82,9 @@ const CardDetailEditDelete = () => {
                                 <input ref={title} type="text" className="form-control" id="title" placeholder={product.title} />
                                 <input ref={description} type="text" className="form-control" id="description" placeholder={product.description} />
                                 <input ref={category} type="text" className="form-control" id="category" placeholder={product.category} />
+                                <input ref={price} type="text" className="form-control" id="price" placeholder={product.price} />
                             </ul>
                             <div className="card-body">
-                                <input ref={price} type="text" className="form-control" id="price" placeholder={product.price} />
                                 <button onClick={() => updateProduct()} type="button" className="btn btn-success">Editar</button>
                                 <button onClick={() => deleteProduct()} type="button" className="btn btn-danger">Eliminar</button>
                             </div>
