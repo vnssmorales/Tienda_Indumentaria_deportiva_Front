@@ -3,6 +3,7 @@ import Home from './assets/pages/Home'
 import React from 'react'
 import CardDetail from './assets/components/CardDetail'
 import { Navbar } from './assets/components/Navbar/navbar'
+import NavCategorias from './assets/components/NavCategorias'
 import CardDetailEditDelete from './assets/components/CardDetailEditDelete'
 import Footer from './assets/components/Footer'
 import UserProfile from './assets/pages/Profile'
@@ -12,7 +13,7 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar />
+        <NavCategorias/>
         <Routes>
           <Route path="/" element={<Home></Home>}/>
           <Route path="/productos/edit/:id" element={<CardDetailEditDelete></CardDetailEditDelete>}/>
