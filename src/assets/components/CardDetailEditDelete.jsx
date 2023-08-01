@@ -26,11 +26,10 @@ const CardDetailEditDelete = () => {
     let category = useRef();
     let image = useRef();
     const deleteProduct = () =>{
-        console.log("detele")
         axios.delete(`http://localhost:3100/api/productos/${id}`)
         .then(response => {
-            alert("Producto Eliminado")
-            //Poner redirección
+            alert("Producto Eliminado");
+            window.location.href = "/"
         })
         .catch(error => {
             alert("Producto No Eliminado")
@@ -39,6 +38,34 @@ const CardDetailEditDelete = () => {
     }
     const updateProduct = () => {
         console.log("editar")
+        let data={}
+        let enviar = false
+        if(image.current.value != "") {
+            data.image = image.current.value;
+            enviar = true
+        }
+        if(title.current.value != "") {
+            data.title = title.current.value
+            enviar = true
+        }
+        if(price.current.value != "") {
+            data.price = price.current.value
+            enviar = true
+        }
+        if(description.current.value != "") {
+            data.description = description.current.value
+            enviar = true
+        }
+        if(category.current.value != "") {
+            data.category = category.current.value
+            enviar = true
+        }
+        
+        if(enviar){
+            axios.patch(`http://localhost:3100/api/productos/${id}`,data)
+            .then(response => console.log(response))
+            .catch(error => console.log(error))
+        }
     }
     return (
         <>
