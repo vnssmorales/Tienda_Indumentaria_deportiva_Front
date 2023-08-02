@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import ProductsContext from "./StateContext";
-import AuthContext from "../../profileContext/AuthContext";
 
 const ProductProvider = ({ children }) => {
     const URL = "http://localhost:3100/api/productos";
     const [products, setProducts] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(null);
-    const { isLoggedIn } = useContext(AuthContext);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         const getProducts = async () => {
@@ -41,6 +40,8 @@ const ProductProvider = ({ children }) => {
     const initialState = {
         products: filteredProducts,
         filterProductsByCategory,
+        isLoggedIn,
+        setIsLoggedIn,
     };
 
     return (

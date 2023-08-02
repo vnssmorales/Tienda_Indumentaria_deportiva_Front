@@ -3,12 +3,12 @@ import { useContext, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import React from "react";
-import AuthContext from "../../profileContext/AuthContext";
+import ProductsContext from "../store/StateContext";
 
  const Login = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
-    const { setIsLoggedIn } = useContext(AuthContext);
+    const { setIsLoggedIn } = useContext(ProductsContext);
     const navigate = useNavigate();
 
     const handleSubmit =  async (e) => {
