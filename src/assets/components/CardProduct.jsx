@@ -3,7 +3,7 @@ import React from 'react';
 
 function CardProduct(props) {
   return (
-    <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3" style={{marginBottom: "20px"}} >
       <div className="card" style={{ width: "18rem", height: "100%" }}>
         <img className="card-img-top" src={props.product.image} alt="Card image cap" style={{ objectFit: "contain", height: "200px", marginTop: "20px" }} />
         <div className="card-body">

@@ -1,0 +1,21 @@
+.btn-nav{
+    background-color: #A100FE;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: transform 0.2s, background-color 0.2s; /* Transición para un aspecto elevado*/
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para un aspecto elevado*/
+    font-family: Comfortaa, sans-serif;
+}
+.btn-nav:hover{
+    background-color: #8200C7;
+}
+.navbar-brand{
+    font-family: Rowdies, sans-serif; /* Reemplaza 'NuevaFuente' con el nombre de tu fuente importada*/
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
