@@ -7,6 +7,7 @@ import NavCategorias from './assets/components/NavCategorias'
 import CardDetailEditDelete from './assets/components/CardDetailEditDelete'
 import Footer from './assets/components/Footer'
 import UserProfile from './assets/pages/Profile'
+import Login from './assets/pages/Login'
 
 function App() {
 
@@ -15,10 +16,11 @@ function App() {
       <Router>
         <NavCategorias/>
         <Routes>
-          <Route path="/" element={<Home></Home>}/>
-          <Route path="/productos/edit/:id" element={<CardDetailEditDelete></CardDetailEditDelete>}/>
-          <Route path="/productos/:id" element={<CardDetail></CardDetail>}/>
-          <Route path="/usuario" element={<UserProfile></UserProfile>}/>
+        <Route path='/login' element={<Login />} />
+          <Route path="/" element={<Home />}/>
+          <Route path="/productos/edit/:id" element={<CardDetailEditDelete />}/>
+          <Route path="/productos/:id" element={<CardDetail />}/>
+          <Route path="/usuario" element={<UserProfile />}/>
         </Routes>
       </Router>
       <Footer></Footer>

@@ -1,24 +1,27 @@
 import axios from "axios";
-import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
+import React from "react";
+import AuthContext from "../../profileContext/AuthContext";
 
  const Login = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
-    const nameRef = useRef();
+    const { setIsLoggedIn } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleSubmit =  async (e) => {
         e.preventDefault();
 
     try{
         axios.defaults.withCredentials = true;
-        const response = await axios.post("http://localhost:3100/api/auth/login", {
+        const response = await axios.post("http://localhost:3100/auth/login", {
             email: emailRef.current.value,
             password: passwordRef.current.value,
-            name: nameRef.current.value,
         }, {headers: {'Access-Control-Allow-Origin':'*', 'Content-Type': 'application/json'}}).then((response) => {
             // console.log(response.data);
-        
+
             Swal.fire({
                 position: 'center',
                 icon: 'success',
@@ -28,7 +31,7 @@ import { Link } from "react-router-dom";
               })
     
               setIsLoggedIn(true);
-             window.location.href = "/home";
+             navigate("/");
             });
     } catch (error) {
         console.log(error);
