@@ -6,14 +6,13 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCalendarAlt, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
-import AuthContext from '../../profileContext/AuthContext';
 
 library.add(faCalendarAlt, faSignInAlt, faSignOutAlt);
 
 const NavCategorias = () => {
     const categories = ['zapatillas', 'shorts', 'calzas', 'poleras'];
     const { filterProductsByCategory } = useContext(ProductsContext);
-    const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+    const {isLoggedIn, setIsLoggedIn} = useContext(ProductsContext);
     const [userData, setUserData] = useState(null);
 
     const getCookie = (name) =>{
@@ -24,12 +23,13 @@ const NavCategorias = () => {
 
     useEffect(() => {
         const token = getCookie('token');
+        console.log("token almacenado en cookie: ", token)
         if (token) {
             setIsLoggedIn(true);
         }else{
             setIsLoggedIn(false);
         }
-    }, []);
+    }, [isLoggedIn]);
 
     const handleLogout = async () => {
         try{
@@ -42,7 +42,6 @@ const NavCategorias = () => {
             console.log(error);
         }
     };
-
 
     const manejarClickDelBoton = (category) => {
         filterProductsByCategory(category);
