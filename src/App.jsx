@@ -8,6 +8,7 @@ import CardDetailEditDelete from './assets/components/CardDetailEditDelete'
 import Footer from './assets/components/Footer'
 import UserProfile from './assets/pages/Profile'
 import Login from './assets/pages/Login'
+import Register from './assets/pages/Register'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <NavCategorias/>
         <Routes>
         <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
           <Route path="/" element={<Home />}/>
           <Route path="/productos/edit/:id" element={<CardDetailEditDelete />}/>
           <Route path="/productos/:id" element={<CardDetail />}/>
