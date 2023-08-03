@@ -1,5 +1,5 @@
 import CardContent from "../components/CardContent";
-import Checkbox_Group from "../components/Checkbox_Group";
+import Checkbox_Group from "../components/CheckBox";
 import React from "react";
 
 const Home = () => {
