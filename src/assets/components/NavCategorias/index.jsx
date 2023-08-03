@@ -112,6 +112,7 @@ const NavCategorias = () => {
                   {categories.slice(4).map((category) => (
                     <Dropdown.Item key={category} onClick={() => manejarClickDelBoton(category)}>
                       {category.charAt(0).toUpperCase() + category.slice(1)}
+                      <hr style={{margin: "5px 0"}} />
                     </Dropdown.Item>
                   ))}
                 </Dropdown.Menu>
