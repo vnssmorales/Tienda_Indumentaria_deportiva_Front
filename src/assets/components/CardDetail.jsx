@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import React from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 //const URL = `http://localhost:3100/api/productos/`
 
@@ -49,6 +49,11 @@ const CardDetail = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-12 d-flex justify-content-center mt-4">
+          <Link to="/" className="btn btn-primary" style={{ backgroundColor: '#A100FE' }}>Volver atrás</Link>
         </div>
       </div>
     </div>
