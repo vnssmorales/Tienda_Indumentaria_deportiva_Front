@@ -3,7 +3,7 @@ import Home from './assets/pages/Home'
 import React from 'react'
 import CardDetail from './assets/components/CardDetail'
 
-import NavCategorias from './assets/components/NavCategorias'
+import NavCategorias from './assets/components/NavCategorias/index'
 import CardDetailEditDelete from './assets/components/CardDetailEditDelete'
 import Footer from './assets/components/Footer'
 import UserProfile from './assets/pages/Profile'
