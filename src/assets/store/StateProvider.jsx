@@ -11,23 +11,20 @@ const ProductProvider = ({ children }) => {
     useEffect(() => {
         const getProducts = async () => {
             try{
-            if(isLoggedIn){
+            if(window.location.href != "http://localhost:3100/auth/login"){
                 axios.defaults.withCredentials = true;
-                const response = await axios.get(URL)
+                const response = await axios.get(URL).catch(() =>{
+                    window.location.href = "/login";
+                })
                 console.log(response.data);
                 setProducts(response.data);
-            }else{
-                const isLoginPage = window.location.href.includes("/login");
-                if(!isLoginPage){
-                    window.location.href = "/login";
-                }
             }
             }catch(error){
                 console.log(error);
             }
         };
         getProducts();
-    }, [isLoggedIn]);
+    }, []);
 
     const filterProductsByCategory = (category) => {
         setSelectedCategory(category);
