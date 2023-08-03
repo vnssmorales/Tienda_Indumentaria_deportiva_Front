@@ -7,6 +7,7 @@ import { faCalendarAlt, faSignInAlt, faSignOutAlt } from '@fortawesome/free-soli
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import { Dropdown } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 
 library.add(faCalendarAlt, faSignInAlt, faSignOutAlt);
 
@@ -28,8 +29,10 @@ useEffect(() => {
     console.log("token almacenado en cookie: ", token)
     if (token) {
         setIsLoggedIn(true);
+        getUserData();
     } else {
         setIsLoggedIn(false);
+        setUserData(null);
     }
 }, [isLoggedIn]);
 
@@ -38,14 +41,35 @@ const handleLogout = async () => {
         axios.defaults.withCredentials = true;
         await axios.post('http://localhost:3100/auth/logout')
         document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        setIsLoggedIn(false);
-        window.location.href = "/login";
+       
+        Swal.fire({ 
+          position: 'center',
+          icon: 'success',
+          title: 'Hasta pronto!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+       
+        setTimeout(() => {
+          setIsLoggedIn(false);
+          window.location.href = "/login";
+        }, 1500);
     } catch (error) {
         console.log(error);
     }
 };
-
-
+ 
+//metodo para obtener los datos del usuario logueado
+const getUserData = async () => {
+  try{
+      const response = await axios.get('http://localhost:3100/api/current', {
+      withCredentials: true,
+  });
+      setUserData(response.data.user);
+  }catch(error){
+      console.log(error);
+  }
+};
 
   const manejarClickDelBoton = (category) => {
     filterProductsByCategory(category);
@@ -96,8 +120,12 @@ const handleLogout = async () => {
             )}
           </ul>
         </div>
-      </div>
-      {isLoggedIn ? (
+    <div>
+       { isLoggedIn && userData &&(
+            <p className='ms3'>{userData.email} </p>
+           )}
+
+        {isLoggedIn ? (
                     <Link to={'/'} className="nav-link" onClick={handleLogout}>
                         <FontAwesomeIcon icon={faSignOutAlt} /> Logout
                     </Link>
@@ -106,6 +134,9 @@ const handleLogout = async () => {
                         <FontAwesomeIcon icon={faSignInAlt} /> Login</Link>
 
                 )}
+                </div>
+      </div>
+     
     </nav>
   );
 };

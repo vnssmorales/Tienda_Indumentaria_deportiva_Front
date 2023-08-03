@@ -49,7 +49,7 @@ import ProductsContext from "../store/StateContext";
     return (
         <>
           <div className="modal" style={{ display: "block" }} tabIndex={"-1"}>
-          <div className="contenedor-login" style={{width: '100%', backgroundColor: 'rgb(234, 225, 225)', padding: '3% 0'}}>
+          <div className="contenedor-login" style={{width: '100%', height: '600px', backgroundColor: 'rgb(234, 225, 225)', padding: '3% 0'}}>
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
