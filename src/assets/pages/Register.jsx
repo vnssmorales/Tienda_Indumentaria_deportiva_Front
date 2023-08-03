@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 
 const Register = () => {
     const nameRef = useRef();
+    const apellidoRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
     const navigate = useNavigate();
@@ -20,7 +21,8 @@ const Register = () => {
     try{
         axios.defaults.withCredentials = true;
         const response = await axios.post("http://localhost:3100/api/create", {
-            name: nameRef.current.value,
+            nombre: nameRef.current.value,
+            apellido: apellidoRef.current.value,
             email: emailRef.current.value,
             password: passwordRef.current.value,
         }, {headers: {'Access-Control-Allow-Origin':'*', 'Content-Type': 'application/json'}}).then((response) => {
@@ -69,6 +71,15 @@ const Register = () => {
                     type="text"
                     name="name"
                     placeholder="Name"
+                    required
+                    />
+
+                    <input
+                    style={{marginBottom: '20px', width: '100%'}}
+                    ref={apellidoRef}
+                    type="text"
+                    name="apellido"
+                    placeholder="Apellido"
                     required
                     />
                 

@@ -56,16 +56,6 @@ const NavCategorias = () => {
             <div className="container">
             <Link className="navbar-brand" to="/">Mi Tienda</Link>
 
-            {isLoggedIn ? (
-           <Link to={'/'} className="nav-link" onClick={handleLogout}>
-             <FontAwesomeIcon icon={faSignOutAlt} /> Logout
-           </Link>
-                    ) : (
-                     <Link to={'/login'} className="nav-link">
-                     <FontAwesomeIcon icon={faSignInAlt}/> Login</Link>
-
-                                )}
-
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -84,6 +74,17 @@ const NavCategorias = () => {
                         ))}
                     </ul>
                 </div>
+
+                {isLoggedIn ? (
+           <Link to={'/'} className="nav-link" onClick={handleLogout}>
+             <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+           </Link>
+                    ) : (
+                     <Link to={'/login'} className="nav-link">
+                     <FontAwesomeIcon icon={faSignInAlt}/> Login</Link>
+
+                                )}
+
             </div>
         </nav>
         
