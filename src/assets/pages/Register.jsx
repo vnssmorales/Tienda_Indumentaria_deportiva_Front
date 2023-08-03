@@ -56,7 +56,7 @@ const Register = () => {
     return (
         <>
           <div className="modal" style={{ display: "block" }} tabIndex={"-1"}>
-          <div className="contenedor-login" style={{width: '100%', backgroundColor: 'rgb(234, 225, 225)', padding: '3% 0'}}>
+          <div className="contenedor-login" style={{width: '100%',height: '650px', backgroundColor: 'rgb(234, 225, 225)', padding: '3% 0'}}>
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
@@ -106,7 +106,7 @@ const Register = () => {
                     <div className="modal-footer" style={{width: '100%', justifyContent: 'space-between'}} >
     
                 
-                   <button type="submit"className="btn btn-primary" style={{width: '200px'}}> Registro </button>
+                   <button type="submit"className="btn btn-primary" style={{width: '200px'}}> Registrarme </button>
                  
                     </div>
                 </form>
