@@ -122,7 +122,7 @@ const getUserData = async () => {
         </div>
     <div>
        { isLoggedIn && userData &&(
-            <p className='ms3'>{userData.email} </p>
+           <Link to={'/usuario'}> <p className='ms3'>{userData.email} </p> </Link>
            )}
 
         {isLoggedIn ? (
