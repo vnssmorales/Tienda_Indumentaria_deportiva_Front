@@ -9,10 +9,8 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-
     <ProductProvider>
     <App />
     </ProductProvider>
-
   </React.StrictMode>,
 )

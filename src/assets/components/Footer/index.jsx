@@ -1,4 +1,4 @@
-import Logo from "../../img/logo.jpg"
+//import Logo from "../../assets/images/logo.png";
 import React from "react";
 function Footer() {
   return (
@@ -24,3 +24,4 @@ function Footer() {
   )
 }
 export default Footer;
+
