@@ -1,11 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
 import React from 'react';
+import axios from 'axios';
+import { useParams, Link } from 'react-router-dom';
 
 //const URL = `http://localhost:3100/api/productos/`
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-
-
 
 const CardDetail = () => {
   const [product, setProduct] = useState([])
@@ -23,34 +21,43 @@ const CardDetail = () => {
       })
   }, [])
 
-
   return (
-    <>
-      <div className="container">
-        <div className="row">
-          <div className='col'></div>
-          <div className="col-6">
-            
-            <div className="card" style={{ width: "24rem" }}>
-              <img className="card-img-top" src={product.image} alt="Card image cap" />{/*    */}
-              <div className="card-body">
-                <h5 className="card-title">{product.title}</h5>{/*  */}
-                <p className="card-text">{product.description}</p>{/*  */}
-              </div>
+    <div className="container justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+      <div className="row">
+        <div className="col-md-12 text-center mb-4">
+          <h1>Detalles del producto</h1>
+        </div>
+      </div>
+      <div className="row d-flex justify-content-center"> 
+        <div className="col-md-4">
+          <div className="card mb-4" style={{ marginBottom: '0' }}>
+            <div className="d-flex justify-content-center align-items-center" style={{ height: '100%' }}> 
+              <img className="card-img img-fluid" src={product.image} alt="Card image cap" />
+            </div>
+          </div>
+        </div>
+        <div className="col-md-8 d-flex">
+          <div className="card w-100">
+            <div className="card-body">
+              <h5 className="card-title">{product.title}</h5>
+              <p className="card-text">{product.description}</p>
               <ul className="list-group list-group-flush">
-                <li className="list-group-item">{product.category}</li>{/*  */}
+                <li className="list-group-item">Categoría: {product.category}</li>
               </ul>
               <div className="card-body">
-                <h3 href="#" className="card-link">{product.price}</h3>{/*  */}
+                <h3 className="card-link">Precio: ${product.price}</h3>
               </div>
             </div>
           </div>
-          
-          <div className='col'></div>
         </div>
       </div>
-    </>
+      <div className="row">
+        <div className="col-md-12 d-flex justify-content-center mt-4">
+          <Link to="/" className="btn btn-primary" style={{ backgroundColor: '#A100FE' }}>Volver atrás</Link>
+        </div>
+      </div>
+    </div>
   )
 }
 
-export default CardDetail
+export default CardDetail;
