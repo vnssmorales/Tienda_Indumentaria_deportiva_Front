@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductsContext from '../store/StateContext';
-import './NavCategorias.css';
+import './CardProduct.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCalendarAlt, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
