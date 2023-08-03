@@ -5,6 +5,7 @@ import './NavCategorias.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCalendarAlt, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { Dropdown } from 'react-bootstrap';
 import Swal from 'sweetalert2';
@@ -22,54 +23,54 @@ const NavCategorias = () => {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
-}
+  }
 
-useEffect(() => {
+  useEffect(() => {
     const token = getCookie('token');
     console.log("token almacenado en cookie: ", token)
     if (token) {
-        setIsLoggedIn(true);
-        getUserData();
+      setIsLoggedIn(true);
+      getUserData();
     } else {
-        setIsLoggedIn(false);
-        setUserData(null);
+      setIsLoggedIn(false);
+      setUserData(null);
     }
-}, [isLoggedIn]);
+  }, [isLoggedIn]);
 
-const handleLogout = async () => {
+  const handleLogout = async () => {
     try {
-        axios.defaults.withCredentials = true;
-        await axios.post('http://localhost:3100/auth/logout')
-        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-       
-        Swal.fire({ 
-          position: 'center',
-          icon: 'success',
-          title: 'Hasta pronto!',
-          showConfirmButton: false,
-          timer: 1500
-        })
-       
-        setTimeout(() => {
-          setIsLoggedIn(false);
-          window.location.href = "/login";
-        }, 1500);
+      axios.defaults.withCredentials = true;
+      await axios.post('http://localhost:3100/auth/logout')
+      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Hasta pronto!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+      setTimeout(() => {
+        setIsLoggedIn(false);
+        window.location.href = "/login";
+      }, 1500);
     } catch (error) {
-        console.log(error);
-    }
-};
- 
-//metodo para obtener los datos del usuario logueado
-const getUserData = async () => {
-  try{
-      const response = await axios.get('http://localhost:3100/api/current', {
-      withCredentials: true,
-  });
-      setUserData(response.data.user);
-  }catch(error){
       console.log(error);
-  }
-};
+    }
+  };
+
+  //metodo para obtener los datos del usuario logueado
+  const getUserData = async () => {
+    try {
+      const response = await axios.get('http://localhost:3100/api/current', {
+        withCredentials: true,
+      });
+      setUserData(response.data.user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const manejarClickDelBoton = (category) => {
     filterProductsByCategory(category);
@@ -82,9 +83,7 @@ const getUserData = async () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#A100FE', padding: '10px 0' }}>
       <div className="container">
-        <Link className="navbar-brand" to="/">La tuki tienda</Link>
-
-      
+        <Link className="navbar-brand" to="/" style={{ fontSize: '1.7rem' }}>La tuki tienda</Link>
 
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,23 +119,27 @@ const getUserData = async () => {
             )}
           </ul>
         </div>
-    <div>
-       { isLoggedIn && userData &&(
-           <Link to={'/usuario'}> <p className='ms3'>{userData.email} </p> </Link>
-           )}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+    {isLoggedIn && userData && (
+        <Link to={'/usuario'}>
+            <button className='btn-nav ms-3'>
+                <FontAwesomeIcon icon={faUser} /> {userData.nombre}
+            </button>
+        </Link>
+    )}
 
-        {isLoggedIn ? (
-                    <Link to={'/'} className="nav-link" onClick={handleLogout}>
-                        <FontAwesomeIcon icon={faSignOutAlt} /> Logout
-                    </Link>
-                ) : (
-                    <Link to={'/login'} className="nav-link">
-                        <FontAwesomeIcon icon={faSignInAlt} /> Login</Link>
-
-                )}
-                </div>
+    {isLoggedIn ? (
+        <Link to={'/'} className="nav-link ms-3" onClick={handleLogout}>
+            <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+        </Link>
+    ) : (
+        <Link to={'/login'} className="nav-link ms-3">
+            <FontAwesomeIcon icon={faSignInAlt} /> Login
+        </Link>
+    )}
+</div>
       </div>
-     
+
     </nav>
   );
 };

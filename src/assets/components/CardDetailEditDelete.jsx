@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState, useRef } from 'react';
 import React from 'react';
 
-const URL = `http://localhost:3100/api/productos/`
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
@@ -19,6 +18,29 @@ const CardDetailEditDelete = () => {
                 console.log(error)
             })
     }, [])
+
+    const [isAdmin, setIsAdmin] = useState(false)
+
+
+    useEffect(() => {
+        getUserData()
+    }, []);
+
+    const getUserData = async () => {
+        try {
+            const response = await axios.get('http://localhost:3100/api/current', {
+                withCredentials: true,
+            });
+            if (response.data.user && response.data.user.role === 'admin') {
+                setIsAdmin(true);
+            } else {
+                setIsAdmin(false);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
 
     let title = useRef();
     let price = useRef();
@@ -84,10 +106,12 @@ const CardDetailEditDelete = () => {
                                 <input ref={category} type="text" className="form-control" id="category" placeholder={product.category} />
                                 <input ref={price} type="text" className="form-control" id="price" placeholder={product.price} />
                             </ul>
+                            {isAdmin &&(
                             <div className="card-body">
                                 <button onClick={() => updateProduct()} type="button" className="btn btn-success">Editar</button>
                                 <button onClick={() => deleteProduct()} type="button" className="btn btn-danger">Eliminar</button>
                             </div>
+                            )}
                         </div>
                     </div>
                     <div className='col'></div>
