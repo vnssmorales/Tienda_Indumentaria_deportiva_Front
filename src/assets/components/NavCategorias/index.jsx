@@ -16,33 +16,36 @@ const NavCategorias = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(ProductsContext);
   const [userData, setUserData] = useState(null);
 
+
   const getCookie = (name) => {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
-  };
+}
 
-  useEffect(() => {
+useEffect(() => {
     const token = getCookie('token');
-    console.log("token almacenado en cookie: ", token);
+    console.log("token almacenado en cookie: ", token)
     if (token) {
-      setIsLoggedIn(true);
+        setIsLoggedIn(true);
     } else {
-      setIsLoggedIn(false);
+        setIsLoggedIn(false);
     }
-  }, [isLoggedIn]);
+}, [isLoggedIn]);
 
-  const handleLogout = async () => {
+const handleLogout = async () => {
     try {
-      axios.defaults.withCredentials = true;
-      await axios.post('http://localhost:3100/auth/logout');
-      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      setIsLoggedIn(false);
-      window.location.href = "/login";
+        axios.defaults.withCredentials = true;
+        await axios.post('http://localhost:3100/auth/logout')
+        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        setIsLoggedIn(false);
+        window.location.href = "/login";
     } catch (error) {
-      console.log(error);
+        console.log(error);
     }
-  };
+};
+
+
 
   const manejarClickDelBoton = (category) => {
     filterProductsByCategory(category);
@@ -57,15 +60,7 @@ const NavCategorias = () => {
       <div className="container">
         <Link className="navbar-brand" to="/">La tuki tienda</Link>
 
-        {isLoggedIn ? (
-          <Link to={'/'} className="nav-link" onClick={handleLogout}>
-            <FontAwesomeIcon icon={faSignOutAlt} /> Logout
-          </Link>
-        ) : (
-          <Link to={'/login'} className="nav-link">
-            <FontAwesomeIcon icon={faSignInAlt} /> Login
-          </Link>
-        )}
+      
 
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,6 +97,15 @@ const NavCategorias = () => {
           </ul>
         </div>
       </div>
+      {isLoggedIn ? (
+                    <Link to={'/'} className="nav-link" onClick={handleLogout}>
+                        <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+                    </Link>
+                ) : (
+                    <Link to={'/login'} className="nav-link">
+                        <FontAwesomeIcon icon={faSignInAlt} /> Login</Link>
+
+                )}
     </nav>
   );
 };
