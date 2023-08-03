@@ -1,34 +1,46 @@
-import React from 'react';
-import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import TableProfile from '../components/TableProfile';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
+const UserProfile = () => {
+    const [user, setUser] = useState(null);
 
+    useEffect(() => {
+       
+        const fetchUserData = async () => {
+            try {
+                const response = await axios.get('http://localhost:3100/api/current', { withCredentials: true });
+                setUser(response.data.user); 
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
 
-const UserProfile = () => {//{ user }
-    let user = {
-        "nombre": "Pepito",
-        "apellido": "Morales",
-        "email": "pepe@gmail.com",
-        "password": "pepe2023",
-        "rol": "user"
-    }
+        fetchUserData();
+    }, []);
+
+    if (!user) return <div>Loading...</div>;  
     return (
-        <div className="container">
+        
+        <div className="container mt-5">
             <div className="row">
-                <div className='col'></div>
-                <div className="col-6"></div>
-                <div className="card mb-3">
-                    <div className="card-body">
-                        <h5 className="card-title">{user.nombre}</h5>
-                        <p className="card-text">{user.apellido}</p>
-                        <p className="card-title">{user.email}</p>
-                        <span className="card-link">Rol: <span>{user.rol}</span></span>
+                <div className="col"></div>
+                <div className="col-6">
+                    <div className="card mb-3">
+                        <div className="card-body">
+                        <h4 className="mb-4" style={{ color: "#A100FE" }}><FontAwesomeIcon icon={faUser} /> Información del usuario  </h4>
+                            <TableProfile user={user} />
+
+                        </div>
                     </div>
                 </div>
-                <div className='col'></div>
+                <div className="col"></div>
             </div>
         </div>
+
+
     );
 };
 
