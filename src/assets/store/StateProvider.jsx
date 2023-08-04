@@ -34,6 +34,10 @@ const ProductProvider = ({ children }) => {
         setSelectedCategory(category);
     };
 
+    const updateProductsAfterOperation = () => {
+        getProducts();
+    };
+
     const filteredProducts = selectedCategory
         ? products.filter((product) => product.category === selectedCategory)
         : products;
@@ -44,6 +48,7 @@ const ProductProvider = ({ children }) => {
         isLoggedIn,
         setIsLoggedIn,
         getProducts,
+        updateProductsAfterOperation,
     };
 
     return (
