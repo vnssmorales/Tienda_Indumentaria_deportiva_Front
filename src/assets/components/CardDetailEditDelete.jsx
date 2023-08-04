@@ -5,11 +5,13 @@ import { useParams } from 'react-router-dom';
 import './editStyle.css';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import ProductsContext from '../store/StateContext';
 
 
 const CardDetailEditDelete = () => {
     const [product, setProduct] = useState([]);
     const { id } = useParams();
+    const {getProducts} = useContext(ProductsContext);
 
     useEffect(() => {
         axios.get(`http://localhost:3100/api/productos/${id}`)
@@ -74,6 +76,7 @@ const CardDetailEditDelete = () => {
                   timer: 1500
                 });
                 window.location.href = "/";
+                getProducts();
               })
               .catch(error => {
                 Swal.fire({
@@ -123,6 +126,7 @@ const CardDetailEditDelete = () => {
                         timer: 1500
                     });
                     console.log(response);
+                    getProducts();
                 })
                 .catch(error => console.log(error));
         }
