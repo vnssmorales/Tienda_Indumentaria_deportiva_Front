@@ -95,7 +95,7 @@ const NavCategorias = () => {
               <button className='btn-nav' onClick={mostrarTodo}>Todos los productos</button>
             </li>
             {/* Renderizar solo los primeros 4 elementos en la barra de navegación */}
-            {categories.slice(0, 4).map((category) => (
+            {categories.slice(0, 3).map((category) => (
               <li className="nav-item" key={category}>
                 <button className='btn-nav' onClick={() => manejarClickDelBoton(category)}>
                   {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -103,13 +103,13 @@ const NavCategorias = () => {
               </li>
             ))}
             {/* Mostrar los elementos restantes en el dropdown */}
-            {categories.length > 4 && (
+            {categories.length > 3 && (
               <Dropdown as="li">
                 <Dropdown.Toggle as="button" className="btn-nav">
                   Más categorías
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  {categories.slice(4).map((category) => (
+                  {categories.slice(3).map((category) => (
                     <Dropdown.Item key={category} onClick={() => manejarClickDelBoton(category)}>
                       {category.charAt(0).toUpperCase() + category.slice(1)}
                       <hr style={{margin: "5px 0"}} />
