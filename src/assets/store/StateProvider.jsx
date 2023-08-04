@@ -23,9 +23,9 @@ const ProductProvider = ({ children }) => {
                 console.log(error);
             }
         };
-        if(isLoggedIn){
+  
             getProducts();
-        }
+
        
     }, []);
 

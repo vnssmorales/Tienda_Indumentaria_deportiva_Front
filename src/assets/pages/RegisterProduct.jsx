@@ -10,7 +10,7 @@ function RegisterProduct() {
     let image = useRef();
 
     const register = () => {
-        console.log("Register")
+        console.log("Register product")
         /* axios.defaults.withCredentials = true; */
         axios.post(URL, {
             title : title.current.value, 

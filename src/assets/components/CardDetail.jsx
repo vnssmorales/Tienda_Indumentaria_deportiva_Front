@@ -21,6 +21,31 @@ const CardDetail = () => {
       })
   }, [])
 
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+      getUserData();
+  }, []);
+
+  const getUserData = async () => {
+      try {
+          const response = await axios.get('http://localhost:3100/api/current', {
+              withCredentials: true,
+          });
+          console.log(response.data);
+          console.log(response.data.user.rol)
+          if (response.data.user && response.data.user.rol === 'admin') {
+              setIsAdmin(true);
+          } else {
+              setIsAdmin(false);
+          }
+      } catch (error) {
+          console.log(error);
+      }
+  };
+  
+
+
   return (
     <div className="container justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
       <div className="row">
@@ -52,10 +77,13 @@ const CardDetail = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col-md-12 d-flex justify-content-center mt-4">
-          <Link to="/" className="btn btn-primary" style={{ backgroundColor: '#A100FE' }}>Volver atrás</Link>
-        </div>
+      <div className="col-md-12 d-flex justify-content-center mt-4">
+        {isAdmin && (
+          <Link to={`/productos/edit/${id}`} className="btn btn-secondary mr-2">Modificar</Link>
+        )}
+        <Link to="/" className="btn btn-primary" style={{ backgroundColor: '#A100FE' }}>Volver atrás</Link>
       </div>
+    </div>
     </div>
   )
 }
