@@ -1,5 +1,5 @@
 import React from 'react';
-import './CardProduct.css'; // Asegúrate de ajustar la ruta si tu archivo CSS tiene otro nombre o ubicación
+import './CardProduct.css'; 
 import { Link } from 'react-router-dom';
 
 function CardProduct(props) {
