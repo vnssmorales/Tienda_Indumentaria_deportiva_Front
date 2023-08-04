@@ -23,10 +23,12 @@ const ProductProvider = ({ children }) => {
             }
         };
 
-    useEffect(() => {
-        
-        getProducts();
-    }, []);
+        useEffect(() => {
+           
+            if (isLoggedIn || window.location.href !== "http://localhost:5173/login") {
+                getProducts();
+            }
+        }, [isLoggedIn]);
 
     const filterProductsByCategory = (category) => {
         setSelectedCategory(category);
@@ -41,6 +43,7 @@ const ProductProvider = ({ children }) => {
         filterProductsByCategory,
         isLoggedIn,
         setIsLoggedIn,
+        getProducts,
     };
 
     return (

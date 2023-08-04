@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import CardProduct from "./CardProduct"
+import CardProduct from "./CardProduct/index"
 import Checkbox_Group from "./CheckBox"
 import ProductsContext from '../store/StateContext';
 import React from 'react';
