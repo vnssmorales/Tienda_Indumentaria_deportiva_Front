@@ -8,10 +8,9 @@ const ProductProvider = ({ children }) => {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    useEffect(() => {
-        const getProducts = async () => {
+    const getProducts = async () => {
             try{
-            if(window.location.href != "http://localhost:3100/auth/login"){
+            if(window.location.href != "http://localhost:5173/login"){
                 axios.defaults.withCredentials = true;
                 const response = await axios.get(URL).catch(() =>{
                     window.location.href = "/login";
@@ -23,6 +22,9 @@ const ProductProvider = ({ children }) => {
                 console.log(error);
             }
         };
+
+    useEffect(() => {
+        
         getProducts();
     }, []);
 
