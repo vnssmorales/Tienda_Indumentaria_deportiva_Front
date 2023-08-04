@@ -83,7 +83,7 @@ const NavCategorias = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#A100FE', padding: '10px 0' }}>
       <div className="container">
-        <Link className="navbar-brand" onClick={mostrarTodo} style={{ fontSize: '1.7rem' }}>La tuki tienda</Link>
+        <Link className="navbar-brand" to={'/'} style={{ fontSize: '1.7rem' }}>La tuki tienda</Link>
 
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
