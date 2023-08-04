@@ -23,10 +23,7 @@ const ProductProvider = ({ children }) => {
                 console.log(error);
             }
         };
-        if(isLoggedIn){
-            getProducts();
-        }
-       
+        getProducts();
     }, []);
 
     const filterProductsByCategory = (category) => {
@@ -52,7 +49,6 @@ const ProductProvider = ({ children }) => {
 };
 
 export default ProductProvider;
-
 
 
 
