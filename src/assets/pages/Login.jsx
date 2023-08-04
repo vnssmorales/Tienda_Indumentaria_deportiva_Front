@@ -40,6 +40,7 @@ const Login = () => {
         })
 
         setIsLoggedIn(true);
+        
         navigate("/");
       });
     } catch (error) {
