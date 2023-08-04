@@ -1,8 +1,36 @@
-# React + Vite
+# Tienda de indumentaria deportiva Grupo 1
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Stack
+Mongo Express ReactJS NodeJS
 
-Currently, two official plugins are available:
+### Requerimientos
+NodeJS, mongoDBCompass, navegador, Postman
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Instrucciones
+- Ejecutar MongoDBCompass
+- Clonar repositorio https://github.com/vnssmorales/Tienda_Indumentaria_deportiva_Front
+
+- Ejecutar en la terminal, en la ruta raiz del repositorio
+```
+npm install
+npm run dev
+```
+- Crear usuario en postman en petición **POST**
+http://localhost:3100/api/create
+y body raw json
+```
+{
+    "nombre": "Paula",
+    "apellido": "Gonzalez",
+    "email": "paulag@gmail.com",
+    "password": "clavePass",
+    "rol": "user"
+}
+```
+- Clonar el repositorio https://github.com/vnssmorales/Tienda_Indumentaria_deportiva_Front
+- Ejecutar en la terminal, en la ruta raiz del repositorio
+```
+npm install
+npm run dev
+```
+- Se puede registrar usuario en la ruta relativa /api/productos por petición POST
