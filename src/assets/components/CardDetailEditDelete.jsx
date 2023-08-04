@@ -75,9 +75,13 @@ const CardDetailEditDelete = () => {
                   showConfirmButton: false,
                   timer: 1500
                 });
-                window.location.href = "/";
-                getProducts();
-              })
+
+                setTimeout(() => {
+                    window.location.href = "/";
+                    getProducts();
+                  }, 1500);
+                })
+                
               .catch(error => {
                 Swal.fire({
                   icon: 'error',
