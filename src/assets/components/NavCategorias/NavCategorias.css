@@ -12,6 +12,8 @@
 }
 .btn-nav:hover{
     background-color: #8200C7;
+    transform: scale(1.1);
+    transition: transform 0.3s ease; 
 }
 .navbar-brand{
     font-family: Rowdies, sans-serif; /* Reemplaza 'NuevaFuente' con el nombre de tu fuente importada*/
@@ -23,3 +25,14 @@
     color: #000;
     text-decoration: none;
 }
+
+.navbar-brand{
+    color: rgb(2, 9, 9) !important;
+}
+
+.navbar-brand:hover{
+    color: white !important;
+    transform: scale(1.1);
+    transition: transform 0.3s ease; 
+}
+
